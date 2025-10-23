@@ -1,0 +1,60 @@
+<div > 
+  <mat-card class="container-list">
+    <mat-card-title>Top 250 Películas - Lista</mat-card-title>
+
+    <div class="controls">
+      <mat-form-field appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por título o descripción">
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-flat-button color="primary" (click)="addNew()">Nueva película</button>
+        <button mat-stroked-button (click)="resetToOriginal()">Restaurar originales</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" aria-label="Películas">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let m"><small>{{ m.id }}</small></td>
+        </ng-container>
+
+        <ng-container matColumnDef="primaryTitle">
+          <th mat-header-cell *matHeaderCellDef>Título</th>
+          <td mat-cell *matCellDef="let m"><a (click)="viewDetail(m)">{{ m.primaryTitle }}</a></td>
+        </ng-container>
+
+        <ng-container matColumnDef="startYear">
+          <th mat-header-cell *matHeaderCellDef>Año</th>
+          <td mat-cell *matCellDef="let m">{{ m.startYear || '-' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="averageRating">
+          <th mat-header-cell *matHeaderCellDef>Rating</th>
+          <td mat-cell *matCellDef="let m">{{ m.averageRating || '-' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="runtimeMinutes">
+          <th mat-header-cell *matHeaderCellDef>Duración</th>
+          <td mat-cell *matCellDef="let m">{{ m.runtimeMinutes || '-' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let m">
+            <button mat-icon-button (click)="edit(m)" aria-label="Editar"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button (click)="delete(m)" aria-label="Eliminar"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button (click)="viewDetail(m)" aria-label="Detalle"><mat-icon>info</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let r; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,25]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+</div> 

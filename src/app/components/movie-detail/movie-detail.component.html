@@ -1,0 +1,23 @@
+<mat-card *ngIf="movie" class="container-detail">
+  <div class="detail" style="display:flex;gap:16px;flex-wrap:wrap;">
+    <div style="width:240px;">
+      <img [src]="movie.primaryImage || 'https://via.placeholder.com/300x450?text=No+Image'" alt="{{movie.primaryTitle}}" style="max-width:100%;border-radius:4px;">
+    </div>
+    <div style="flex:1;">
+      <h2>{{ movie.primaryTitle }}</h2>
+      <p><strong>Año:</strong> {{ movie.startYear || '-' }}</p>
+      <p><strong>Duración:</strong> {{ movie.runtimeMinutes || '-' }} min</p>
+      <p><strong>Rating:</strong> {{ movie.averageRating || '-' }}</p>
+      <p><strong>Géneros:</strong> {{ movie.genres?.join(', ') || '-' }}</p>
+      <h3>Descripción</h3>
+      <p>{{ movie.description }}</p>
+      <div style="margin-top:12px;">
+        <button mat-flat-button color="primary" (click)="back()">Volver</button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<mat-card *ngIf="!movie">
+  <mat-card-title>Película no encontrada</mat-card-title>
+  <button mat-flat-button color="primary" (click)="back()">Volver</button>
+</mat-card>

@@ -1,0 +1,28 @@
+<h2 mat-dialog-title class="titulo-form">{{ mode === 'edit' ? 'Editar película' : 'Crear película' }}</h2>
+<form (ngSubmit)="save()" [formGroup]="form" class="form-grid container-form">
+  <mat-form-field appearance="fill" class="full form-field">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="primaryTitle" />
+    <mat-error *ngIf="form.get('primaryTitle')?.hasError('required')">Obligatorio</mat-error>
+    <mat-error *ngIf="form.get('primaryTitle')?.hasError('minlength')">Mínimo 2 caracteres</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full form-field">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput rows="5" formControlName="description"></textarea>
+    <mat-error *ngIf="form.get('description')?.hasError('required')">Obligatorio</mat-error>
+    <mat-error *ngIf="form.get('description')?.hasError('minlength')">Mínimo 10 caracteres</mat-error>
+  </mat-form-field>
+
+  <div style="display:flex;gap:12px;">
+    <mat-form-field appearance="fill"><mat-label>Año</mat-label><input matInput type="number" formControlName="startYear" /></mat-form-field>
+    <mat-form-field appearance="fill"><mat-label>Duración</mat-label><input matInput type="number" formControlName="runtimeMinutes" /></mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill" class="full form-field"><mat-label>URL imagen</mat-label><input matInput formControlName="primaryImage" /></mat-form-field>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancelar</button>
+    <button mat-flat-button color="primary" type="button" (click)="save()">{{ mode === 'edit' ? 'Guardar' : 'Crear' }}</button>
+  </div>
+</form>
