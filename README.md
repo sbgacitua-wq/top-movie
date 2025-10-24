@@ -1,27 +1,12 @@
-# ImdbCrudMaterial
+# Top-Movie
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 
-## Development server
+## Instrucciones
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Esta app consulta la API "Top 250 Movies" que se encuentra en https://rapidapi.com/ y entrega un ranking de 250 peliculas usando la famosa base de datos IMDb.
+Aparte de listar las 250 peliculas podemos buscar y editar los campos "titulo" y "descripcion"
 
-## Code scaffolding
+## Despliegue
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Esta app está desplegada dentro de "github pages", y el link es el siguiente: https://sbgacitua-wq.github.io/top-movie
